@@ -5,11 +5,13 @@ import AppRouter from './Router';
 const App=()=>{
   const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [isInit, setIsInit]=useState(false);
+  const[userObj, setUserObj]=useState(null);
 
   useEffect(()=>{
     authService.onAuthStateChanged((user)=>{
       if(user){
         setIsLoggedIn(true);
+        setUserObj(user);
       }
       else{
         setIsLoggedIn(false);
@@ -21,7 +23,7 @@ const App=()=>{
 
   return (
     <div>
-      {isInit ? <AppRouter isLoggedIn={isLoggedIn}/> : "Loading..."}
+      {isInit ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Loading..."}
     </div>
   );
 }

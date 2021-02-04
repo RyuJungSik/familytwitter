@@ -1,11 +1,11 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from './components/Navigation';
 import Auth from './router/Auth';
 import Home from './router/Home';
 import Profile from './router/Profile';
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
     return (
         <div>
             <Router>
@@ -13,7 +13,7 @@ const AppRouter = ({ isLoggedIn }) => {
                     <>
                         <Navigation/>
                         <Switch>
-                            <Route exact path="/"><Home /></Route>
+                            <Route exact path="/"><Home userObj={userObj}/></Route>
                             <Route exact path="/profile"><Profile /></Route>
                         </Switch>
 
