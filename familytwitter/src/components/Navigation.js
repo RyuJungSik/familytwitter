@@ -1,20 +1,44 @@
 import React from 'react'
 import { HashRouter as Router, Link } from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faHome, faUser} from "@fortawesome/free-solid-svg-icons";
+
 
 const Navigation = ({userObj}) => {
     return (
-        <Router>
-            <div>
+    
+ 
                 <nav>
 
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/profile">{userObj.displayName}의 Profile</Link></li>
+                    <ul style={{
+                        display:"flex",
+                        justifyContent:"center",
+                        marginTop:50,
+                    }}>
+                        <li><Link to="/" style={{marginRight :10,
+                         display:"flex",
+                         flexDirection:"column",
+                         alignItems:"center",
+                         fontSize:"12",}}><FontAwesomeIcon icon={faHome} color={"#04AAFF"} size="2x" /><span style={{marginTop : 10}}>Home</span></Link></li>
+                        
+                        <li><Link to="/profile" style={{
+                            marginLeft:10, 
+                            display:"flex",
+                            flexDirection:"column",
+                            alignItems:"center",
+                            fontSize:"12",
+                        }}>
+                            <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x"/>
+                            <span style={{marginTop : 10}}>
+                            {userObj.displayName ?  `${userObj.displayName} ` : " 익명 "} 의Profile
+                            </span>
+                            
+                            </Link></li>
                     </ul>
 
                 </nav>
-            </div>
-        </Router>
+            
+       
     )
 }
 
