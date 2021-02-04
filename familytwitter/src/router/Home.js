@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Nweet from '../components/Nweet';
-import { dbService, firebaseInstance } from '../fbase';
+import { dbService, firebaseInstance, storageService } from '../fbase';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
@@ -24,13 +25,23 @@ const Home = ({ userObj }) => {
         });
     }, [])
 
-    const onSubmit = (event) => {
+    const onSubmit = async(event) => {
         event.preventDefault();
+        let attachmentUrl="";
+        if(attachment){
+        const attachmentRef=storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+        const response=await attachmentRef.putString(attachment, "data_url");
+       attachmentUrl=await response.ref.getDownloadURL();
+        }
         dbService.collection("nweets").add({
             text: nweet,
             createAt: Date.now(),
-            uid: userObj.uid
+            uid: userObj.uid,
+            attachmentUrl:attachmentUrl,
         })
+        setNweet("")
+        setAttachment("");
+        fileInput.current.value = "";
     }
 
     const onImgChange = (event) => {
