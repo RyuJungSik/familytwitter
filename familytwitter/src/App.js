@@ -11,7 +11,11 @@ const App=()=>{
     authService.onAuthStateChanged((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName:user.displayName,
+          uid:user.uid,
+          updateProfile:(args)=>user.updateProfile(args),
+        });
       }
       else{
         setIsLoggedIn(false);
@@ -21,9 +25,18 @@ const App=()=>{
     )
   },[])
 
+  const refreshUser=async()=>{
+    const user=await authService.currentUser;
+    setUserObj({
+      displayName:user.displayName,
+      uid:user.uid,
+      updateProfile:(args)=>user.updateProfile(args),
+    });
+  };
+
   return (
     <div>
-      {isInit ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Loading..."}
+      {isInit ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}  refreshUser={ refreshUser}/> : "Loading..."}
     </div>
   );
 }
