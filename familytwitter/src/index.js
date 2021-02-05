@@ -7,6 +7,7 @@ import "./components/Auth.css";
 import "./components/Navigation.css";
 import "./components/Nweet.css";
 import "./components/NweetFactory.css";
+import "./components/Profile.css";
 
 
 ReactDOM.render(

@@ -40,13 +40,14 @@ const Nweet = ({ nweetObj, nweetId, userObj }) => {
     return (
         <div className="nweet">
 
-           {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} width="50px" height="50px"/>}
+           {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
+            <div className="nweet_box">
             <h4>{nweetObj.text}</h4>
-
-
+            <span>작성자 : {nweetObj.userName}</span>
+            </div>
             {   isEditing && (
                 <form onSubmit={onSubmit} className="container nweetEdit">
-                    <input type="text" value={newNweet} onChange={onChange} required  autoFocus className="formInput"/>
+                    <input type="text" value={newNweet} onChange={onChange} required  autoFocus className="formInput" maxLength="11"/>
                     <input type="submit" value="Edit" className="formBtn" />
                 </form>
             )}
@@ -55,8 +56,8 @@ const Nweet = ({ nweetObj, nweetId, userObj }) => {
             {userObj.uid === nweetObj.uid &&
                 (
                     <div className="nweet__actions">
-                        <span onClick={onDeleteClick}><FontAwesomeIcon icon={faTrash}/></span>
-                        <span  onClick={toggleEditing}>{isEditing ? "Cancel" : (<FontAwesomeIcon icon={faPencilAlt}/>)}</span>
+                        <span onClick={onDeleteClick}><FontAwesomeIcon icon={faTrash} size="1x"/></span>
+                        <span  onClick={toggleEditing}>{isEditing ? "Cancel" : (<FontAwesomeIcon icon={faPencilAlt} size="1x"/>)}</span>
                     </div>
                 )
             }

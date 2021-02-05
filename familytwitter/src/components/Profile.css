@@ -10,3 +10,21 @@
 .logOut{
     margin-top:50px;
 }
+
+
+.EditName{
+    margin-top:50px;
+}
+
+.profile__spans{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.profile__spans span{
+background-color: white;
+color:black;
+font-size: 15px;
+}

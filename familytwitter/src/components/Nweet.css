@@ -17,8 +17,19 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
+.nweet{
+    display: flex;
+}
+
+
 .nweet h4{
-    font-size: 14px;
+    font-size: 16px;
+  
+}
+
+.nweet span{
+    font-size: 11px;
+    opacity: 0.8;
 }
 
 .nweet img{
@@ -41,6 +52,6 @@
     cursor: pointer;
 }
 
-.nweet__actions:first-child{
-    margin-right: 10px;
+.nweet__actions span:first-child{
+    margin-right: 20px;
 }

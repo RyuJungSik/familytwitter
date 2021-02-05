@@ -31,6 +31,7 @@ const NweetFactory = ({ userObj }) => {
             createAt: Date.now(),
             uid: userObj.uid,
             attachmentUrl: attachmentUrl,
+            userName:userObj.displayName
         });
 
         setNweet("")

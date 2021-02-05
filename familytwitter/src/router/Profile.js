@@ -37,9 +37,10 @@ const Profile = ({ userObj, refreshUser }) => {
                         <input type="submit" value="Edit" className="formBtn" style={{marginTop :10,}}/>
                     </form>
                 )}
-            <span onClick={onClick} className="fromBtn cancelBtn logOut">LogOut</span>
-            <button onClick={toggleEditing }  className="fromBtn cancelBtn logOut">{isEditing ? "Cancel" : "Edit Profile"}</button>
-
+            <div className="profile__spans">
+            <span onClick={onClick} className="formBtn cancelBtn logOut">LogOut</span>
+            <span onClick={toggleEditing }  className="formBtn cancelBtn logOut">{isEditing ? "Cancel" : "Edit Name"}</span>
+            </div>
         </div>
     )
 }

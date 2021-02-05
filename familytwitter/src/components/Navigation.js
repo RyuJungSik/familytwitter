@@ -30,7 +30,7 @@ const Navigation = ({userObj}) => {
                         }}>
                             <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x"/>
                             <span style={{marginTop : 10}}>
-                            {userObj.displayName ?  `${userObj.displayName} ` : " 익명 "} 의Profile
+                            {userObj.displayName ?  `${userObj.displayName}` : " 익명"}의 Profile
                             </span>
                             
                             </Link></li>
